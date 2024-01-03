@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<hr>
+
+<head>
+    <title>Air Pollution and Demographics</title>
+    <style>
+        h1 {text-align: center;}
+        h2 {text-align: center;}
+        h3 {text-align: center;}
+          .GFG { 
+            background-color: green; 
+            border: 2px solid black; 
+            color: white; 
+            padding: 5px 10px; 
+            text-align: center; 
+            display: inline-block; 
+            font-size: 20px; 
+            cursor: pointer; 
+            text-decoration:none; 
+        }
+        body {
+          background-image: url('https://i.ibb.co/Lh3PNxD/img.webp'); 
+          }
+    </style>
+</head>
+<body style="font-family: georgia">
+    <h1>How Bad Is The Air You Are Breathing?</h1>
+    <h3>By Zachary Knudsen, Varshika Prasanna, & Ashley Singla</h3>
+
+<hr>
+
+    <p style="text-align:center"> 
+      <a href="/map" class="GFG"><span style="text-align:center">Click Here to View Map</a>
+    </p>
+
+<hr>
+
+    <h2>Air Pollution Grade Methodology</h2>
+    <p style= "margin-left: 25px;">1. We collected data from the US Census Bureau, the Environmental Protection Agency (EPA),
+      and County Health Rankings and Roadmaps.</p>
+    <p style= "margin-left: 25px;">2. From the EPA API, we chose to use the five most-tracked air pollutants, which are
+      Carbon Monoxide, Ground-Level Ozone, Particulate Matter, Nitrogen Dioxide, and Sulfur Dioxide.
+      However, the EPA did not have pollutant data for every single county in the United States.</p>
+    <p style= "margin-left: 25px;">3. We used a K-Nearest Neighbors (KNN) Imputer algorithm to fill in missing air pollutant values.
+      The KNN algorithm uses the proximity of one data point to others to accurately predict missing values.
+      We used population, race, and income data of every county from the US Census Bureau API to make these predictions.</p>
+    <p style= "margin-left: 25px;">4. Then, we wanted to find what proportion each of these pollutants contributed to the deterioration of the physical environment.
+      We used the physical environment rankings from the County Health Rankings and Roadmaps data as a basis for evaluation.</p>
+    <p style= "margin-left: 25px;">5. We ran a Random Forest Regression model (with optimized hyperparameters) to predict the physical environment
+      rankings of counties from the revised air pollution data. Next, we extracted the feature importances
+      of each pollutant in the Random Forest prediction to identify how much each pollutant
+      impacted the physical environment.</p>
+    <p style= "margin-left: 25px;">6. We used these feature importances as "weights" to calculate a weighted average pollution score for each county.
+      Then, we assigned numerical ranks to each county based on pollution scores.</p>
+    <p style= "margin-left: 25px;">7. For simplicity, we split all counties into quintiles, and assigned each quintile a grade of A, B, C, D, or F,
+      with A representing counties with the least air pollution.</p>
+
+<hr>
+
+    <p style= "margin-left: 25px;"><b>Map Note:</b> In the US Census survey, people may choose to provide two or more races.
+      This may lead to race percentages displayed on the map adding up to more than 100% for some counties.</p>
+
+<hr>
+
+</body>
+</html>
